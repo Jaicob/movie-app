@@ -1,5 +1,6 @@
 package com.jaicob.movieapp;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -59,5 +60,13 @@ public class MovieActivity extends AppCompatActivity {
             }
 
         });
+
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        movieAdapter.notifyDataSetChanged();
     }
 }
