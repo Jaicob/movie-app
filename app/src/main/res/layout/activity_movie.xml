@@ -10,6 +10,7 @@
     tools:context="com.jaicob.movieapp.MovieActivity"
     android:background="@color/colorBackground">
 
+    <!-- Question: Are the best practices for the order in which to set these attributes?-->
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

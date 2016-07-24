@@ -4,6 +4,8 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="15dp">
 
+    <!--Question: Seemed a bit overkill to create another layout resource for this but I suppose percentLayouts
+    Could have allowed for me to resize the image based on orientation as well? -->
     <ImageView
         android:layout_width="270dp"
         android:layout_height="wrap_content"

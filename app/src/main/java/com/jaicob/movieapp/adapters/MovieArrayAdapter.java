@@ -22,6 +22,8 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
  */
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
+    // Question: are viewholders typically implemented as private classes? Or was this just
+    // Used to show how one could be made quickly?
     private static class ViewHolder {
         TextView tvTitle;
         TextView tvOverview;
@@ -34,6 +36,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         // Get the data item for this position
         Movie movie = getItem(position);
         ViewHolder viewHolder;
@@ -51,16 +54,16 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        // Clear out prev image
+        // Clear prev image
         viewHolder.ivImage.setImageResource(0);
 
         // Populate text
         viewHolder.tvTitle.setText(movie.getOriginalTitle());
         viewHolder.tvOverview.setText(movie.getOverview());
 
-        // Load movie images
-        String image;
+        // Load movie images based on orientation
         int orientation = getContext().getResources().getConfiguration().orientation;
+
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             Picasso.with(getContext()).load(movie.getPosterPath()).transform(new RoundedCornersTransformation(8, 8)).into(viewHolder.ivImage);
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -69,6 +72,4 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
         return convertView;
     }
-
-
 }
